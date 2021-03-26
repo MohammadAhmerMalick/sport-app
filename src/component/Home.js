@@ -1,110 +1,156 @@
 import { useState } from "react"
+import EventList from "./home/main-panel/EventList"
+import AddEvent from "./home/main-panel/AddEvent"
 import Aside from "./home/Aside"
 
 export default function Home() {
 
   let arr = [
     {
+      title: "Playmakers",
+      sport: "baseball",
+      date: 1628467200000,
+      athletes: "Abdullah Reeve",
+    },
+    {
       title: "Friday Night Lights",
       sport: "soccer",
-      date: "2021-06-21",
+      date: 1592697591000,
       athletes: "Tianna Ayers",
     },
     {
       title: "ESPN 30 for 30",
       sport: "basketball",
-      date: "2021-07-21",
+      date: 1595289600000,
       athletes: "Briana Krause",
     },
     {
       title: "The League",
       sport: "tennis",
-      date: "2021-07-23",
+      date: 1626998400000,
       athletes: "John-Paul Webb",
-    },
-    {
-      title: "Playmakers",
-      sport: "baseball",
-      date: "2021-08-09",
-      athletes: "Abdullah Reeve",
     },
     {
       title: "College Gameday",
       sport: "golf",
-      date: "2021-08-18",
+      date: 1629244800000,
       athletes: "Chance Atherton",
     },
     {
       title: "Eastbound and Down",
       sport: "running",
-      date: "2021-09-17",
+      date: 1631836800000,
       athletes: "Macy Randall",
     },
     {
       title: "Sports Night",
       sport: "volleyball",
-      date: "2021-10-01",
+      date: 1633046400000,
       athletes: "Matilda Meza",
     },
 
   ]
-
-
-
-  var d1 = new Date();
-  var d2 = new Date(d1);
-  var same = d1.getTime() === d2.getTime();
-  var notSame = d1.getTime() !== d2.getTime();
-  
-  // console.log(d1)
-  // console.log(d2)
-  // console.log(same)
-  // console.log(notSame)
-  
-  var d2 = Date.parse(d1);
-  var d1 = Date.parse("2021-01-21");
-  console.log(d1)
-  console.log(d2)
-  
   const [events, setEvents] = useState(arr)
+
+  const [activeCard, setActiveCard] = useState({
+    addEvent: false,
+    editEvent: true,
+  })
+
   return (
     <main>
       <Aside></Aside>
       <div className="main-panel">
-        <div className="card">
-          <h3 className="card-title">card-title</h3>
-          <div className="seperator"></div>
-          <div className="card-table">
+        <EventList
+          events={events}
+          setEvents={setEvents}
+          arr={arr}
+          setActiveCard={setActiveCard}>
+        </EventList>
+        <AddEvent
+          events={events}
+          setEvents={setEvents}
+          activeCard={activeCard}>
+        </AddEvent>
 
-            <div className="table-conditions">
-              <h6>Select</h6>
-              <label><input type="checkbox"></input>Current Events</label>
+
+
+
+
+
+
+        <div className={`card ${activeCard.editEvent ? "" : "minimize"}`}>
+          <h3 className="card-title">Add New Event</h3>
+          <div className="seperator"></div>
+          <div className="divide-in-two">
+            <div className="one">
+              <div className="card-form">
+                <div className="ahm_form-group">
+                  <label>Title</label>
+                  <input
+                    // className={`${valueError.title ? "error" : ""}`}
+                    type="text"
+                  // value={newEvent.title}
+                  // onChange={(e) => addNewEventValies(e, "title")}
+                  ></input>
+                </div>
+              </div>
+              <div className="card-form">
+                <div className="ahm_form-group">
+                  <label>Sport</label>
+                  <input
+                    // className={`${valueError.sport ? "error" : ""}`}
+                    type="text"
+                  // value={newEvent.sport}
+                  // onChange={(e) => addNewEventValies(e, "sport")}
+                  ></input>
+                </div>
+              </div>
             </div>
-            <h6 className="table-title">Table Type</h6>
-            <table className="table">
-              <tbody>
-                <tr>
-                  <th>S#</th>
-                  <th>Title</th>
-                  <th>Sport</th>
-                  <th>Date</th>
-                  <th>Athletes</th>
-                </tr>
-                {events.map((data, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{data.title}</td>
-                      <td>{data.sport}</td>
-                      <td>{data.date}</td>
-                      <td>{data.athletes}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+            <div className="spacing"></div>
+            <div className="two">
+              <div className="card-form">
+                <div className="ahm_form-group">
+                  <label>Athletes</label>
+                  <input
+                    // className={`${valueError.athletes ? "error" : ""}`}
+                    type="text"
+                  // value={newEvent.athletes}
+                  // onChange={(e) => addNewEventValies(e, "athletes")}
+                  ></input>
+                </div>
+              </div>
+              <div className="card-form">
+                <div className="ahm_form-group">
+                  <label>Date</label>
+                  <input
+                    // className={`${valueError.date ? "error" : ""}`}
+                    type="date"
+                  // value={moment(newEvent.date).format("YYYY-MM-DD")}
+                  // onChange={(e) => addNewEventValies(e, "date")}
+                  ></input>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="actions">
+            <button
+              className="reset"
+              // onClick={() => { setNewEvent({ title: "", sport: "", date: "", athletes: "" }) }}
+            >reset</button>
+            <button
+              className="add"
+              // onClick={() => { addNewEvent() }}
+            >submit</button>
           </div>
         </div>
+
+
+
+
+
+
+
       </div>
     </main>
   )

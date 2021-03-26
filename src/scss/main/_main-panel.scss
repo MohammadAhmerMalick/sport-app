@@ -1,13 +1,24 @@
 .main-panel {
   padding: 30px;
   overflow-y: scroll;
+
+  .divide-in-two {
+    display: grid;
+    grid-template-columns: auto 15px auto;
+    padding: 15px;
+  }
+
+  .card.minimize {
+    height: 35px;
+    overflow: hidden;
+  }
   .card {
     box-shadow: 0 0 13px 0px rgba($color: #000000, $alpha: 0.1);
     width: 100%;
     background-color: white;
     border-radius: 5px;
-    // height: 150vh;
     padding-bottom: 15px;
+    margin-bottom: 20px;
     .seperator {
       border-bottom: 1.5px solid #e5e7eb;
     }
@@ -17,48 +28,54 @@
       font-size: 16px;
       font-weight: 500;
     }
-    .card-table {
-      margin: 5px 15px;
+    @import "card-table";
 
-      .table-title,
-      .table-conditions h6 {
-        font-weight: 500;
-        color: gray;
-        margin: 20px 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-        letter-spacing: 1px;
-      }
-      .table-conditions {
+    .card-form {
+      // margin: 15px;
+      .ahm_form-group {
+        display: grid;
+        margin-top: 15px;
         label {
-          font-weight: normal;
-          font-size: 14px;
-          input[type="checkbox"] {
-            border: 1px solid red;
-            box-shadow: inset 0 0 2px 1px rgba($color: $primary, $alpha: 1);
-            margin-right: 5px;
-            margin-top: 2px;
+          font-weight: 14px;
+          font-weight: 500;
+          color: gray;
+          display: block;
+        }
+        input {
+          margin-top: 8px;
+          border-radius: 5px;
+          border: 1px solid rgba($color: #000000, $alpha: 0.2);
+          box-shadow: 0 0 2px 0 rgba($color: #000000, $alpha: 0.1);
+          padding: 5px 8px;
+          &.error {
+            border: 1px solid rgba($color: red, $alpha: 0.5);
+            box-shadow: 0 0 2px 0 rgba($color: red, $alpha: 0.3);
           }
         }
       }
-      .table {
-        width: 100%;
-        text-align: left;
-        font-size: 14px;
-        border-collapse: collapse;
-        border-spacing: 0px;
-        tr {
-          th,
-          td {
-            border: 1px solid #e9e9e9;
-            margin: 0;
-            font-weight: normal;
-            padding: 8px;
-          }
-          th {
-            font-weight: 500;
-            border-bottom: 1px solid rgba($color: $primary, $alpha: 1);
-          }
+    }
+
+    .actions {
+      padding: 0 15px;
+      padding-top: 15px;
+      text-align: right;
+      button {
+        background-color: $primary;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 18px;
+        border: none;
+        cursor: pointer;
+        text-transform: capitalize;
+        margin-left: 15px;
+
+        &:hover {
+          transform: translate(-1px, -1px);
+          box-shadow: 1px 1px 5px 0px rgba($color: #000000, $alpha: 0.5);
+        }
+        &:active {
+          transform: translate(0px, 0px);
+          box-shadow: 1px 1px 5px 0px rgba($color: #000000, $alpha: 0.5);
         }
       }
     }

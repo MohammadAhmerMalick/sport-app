@@ -1,7 +1,7 @@
 import { BrowserRouter as Route, Link } from "react-router-dom"
-import React from 'react';
-import axios from 'axios';
-// import api from '../api';
+import React from 'react'
+import axios from 'axios'
+// import api from '../api'
 
 const Register = () => {
 
@@ -10,14 +10,9 @@ const Register = () => {
     name: '',
     password: '',
     signup_code: ''
-  });
+  })
 
-  const _handleChange = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value
-    });
-  }
+  const _handleChange = (e) => { setData({ ...data, [e.target.name]: e.target.value }) }
 
   const _handleSubmit = async () => {
     try {
@@ -28,13 +23,13 @@ const Register = () => {
           password: data.password,
           signup_code: data.signup_code
         }
-        let res = await axios.post('/auth/signup', body);
-        console.log(res.data);
+        let res = await axios.post('/auth/signup', body)
+        console.log(res.data)
       } else {
-        alert('Invalid Code');
+        alert('Invalid Code')
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err.message)
     }
   }
 
@@ -69,4 +64,4 @@ const Register = () => {
   )
 }
 
-export default Register;
+export default Register

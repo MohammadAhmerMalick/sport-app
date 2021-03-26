@@ -1,0 +1,46 @@
+.card-table {
+  margin: 5px 15px;
+  .table-title,
+  .table-conditions h6 {
+    font-weight: 500;
+    color: gray;
+    margin: 20px 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .table-conditions {
+    label {
+      font-weight: normal;
+      font-size: 14px;
+      input[type="checkbox"] {
+        border: 1px solid red;
+        box-shadow: inset 0 0 2px 1px rgba($color: $primary, $alpha: 1);
+        margin-right: 5px;
+        margin-top: 2px;
+      }
+    }
+  }
+  .table {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    tr {
+      th,
+      td {
+        border: 1px solid #e9e9e9;
+        margin: 0;
+        font-weight: normal;
+        padding: 8px;
+        text-transform: capitalize;
+      }
+      th {
+        cursor: pointer;
+        font-weight: 500;
+        border-bottom: 1px solid rgba($color: $primary, $alpha: 1);
+      }
+    }
+  }
+}

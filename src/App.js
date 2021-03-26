@@ -13,7 +13,7 @@ export default function App() {
           <Route exact path="/"><Home></Home></Route>
           <Route path="/login"><Login></Login></Route>
           <Route path="/register"><Register></Register></Route>
-        </Switch>        
+        </Switch>
       </Router>
     </div>
   );
